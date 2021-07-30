@@ -150,7 +150,7 @@ public class TestAPI {
 
     }
 
-    //6、获取数据
+    //6、获取数据(get)
     public static void getData(String tableName,String rowKey,String cf,String cn) throws IOException {
 
         //1.获取表对象
@@ -209,11 +209,25 @@ public class TestAPI {
     }
 
     //8、数据删除
-    public static void deleteData(String tableName,String rwoKey,String cf,String cn) throws IOException {
+    public static void deleteData(String tableName,String rowKey,String cf,String cn) throws IOException {
 
         //1.获取表对象
         Table table = connection.getTable(TableName.valueOf(tableName));
-        
+
+        //2.构建删除对象
+        Delete delete = new Delete(Bytes.toBytes(rowKey));
+
+        //2.1设置删除的列
+       // delete.addColumns(Bytes.toBytes(cf),Bytes.toBytes(cn));
+
+        //2.2删除指定的列族
+       // delete.addFamily(Bytes.toBytes(cf));
+
+        //3.执行删除操作
+        table.delete(delete);
+
+        //4.关闭连接
+        table.close();
     }
 
     //关闭连接
@@ -258,6 +272,9 @@ public class TestAPI {
 
         //7、测试扫描数据
         //scanTable("stu");
+
+        //8、测试删除
+        deleteData("stu","1007","info1","name");
 
         //System.out.println(isTableExist("stu5"));
 
