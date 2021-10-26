@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * 1、分布微博
+ * 1、发布微博
  * 2、删除微博
  * 3、关注用户
  * 4、取关用户
