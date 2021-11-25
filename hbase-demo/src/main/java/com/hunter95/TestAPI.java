@@ -189,7 +189,8 @@ public class TestAPI {
         Table table = connection.getTable(TableName.valueOf(tableName));
 
         //2.构建scan对象
-        Scan scan = new Scan(Bytes.toBytes("1001"),Bytes.toBytes("1003"));
+        //Scan scan = new Scan(Bytes.toBytes("lisi"),Bytes.toBytes("zhangsan"));
+        Scan scan = new Scan();
 
         //3.扫描表
         ResultScanner resultScanner = table.getScanner(scan);
@@ -229,7 +230,26 @@ public class TestAPI {
         //4.关闭连接
         table.close();
     }
+    public static void truncateData(String tableName) throws IOException {
 
+        //1.获取表对象
+        Table table = connection.getTable(TableName.valueOf(tableName));
+
+        //2.构建删除对象
+        Delete delete = new Delete(Bytes.toBytes(tableName));
+
+        //2.1设置删除的列
+        // delete.addColumns(Bytes.toBytes(cf),Bytes.toBytes(cn));
+
+        //2.2删除指定的列族
+        // delete.addFamily(Bytes.toBytes(cf));
+
+        //3.执行删除操作
+        table.delete(delete);
+
+        //4.关闭连接
+        table.close();
+    }
     //关闭连接
     public static void close(){
 
@@ -265,16 +285,17 @@ public class TestAPI {
         //createNameSpace("0408");
 
         //5、向表插入数据测试
-        //putData("stu","1002","info1","name","wuhu");
+        //putData("Student","wangwu","score","Math","88");
 
         //6、获取单行数据
         //getData("stu","1002","info1","name");
 
         //7、测试扫描数据
-        //scanTable("stu");
+        //scanTable("Student");
 
         //8、测试删除
-        deleteData("stu","1007","info1","name");
+        //deleteData("Student","wangwu","score","Math");
+        truncateData("stu");
 
         //System.out.println(isTableExist("stu5"));
 
