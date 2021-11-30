@@ -9,7 +9,6 @@ import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.client.coprocessor.Batch;
 //import org.apache.hadoop.hbase.coprocessor.example.generated.ExampleProtos.CountRequest.request;
-//import org.apache.hadoop.hbase.ipc.BlockingRpcCallback;
 import org.apache.hadoop.hbase.ipc.ServerRpcController;
 
 public class ExampleForHBase4 {
@@ -21,7 +20,7 @@ public class ExampleForHBase4 {
     public static void main(String[] args) throws Throwable {
         init();
 
-        String tableName = "student";
+        String tableName = "201906061515_student";
 
         Table table = connection.getTable(TableName.valueOf(tableName));
         final ExampleProtos.CountRequest request = ExampleProtos.CountRequest.getDefaultInstance();
@@ -34,7 +33,6 @@ public class ExampleForHBase4 {
                         BlockingRpcCallback<ExampleProtos.CountResponse> rpcCallback =
                                 new BlockingRpcCallback<ExampleProtos.CountResponse>();
 
-                        //\u5b9e\u73b0\u5728server\u7aef
                         counter.getRowCount(controller, request, rpcCallback);
                         ExampleProtos.CountResponse response = rpcCallback.get();
                         if (controller.failedOnException()) {
@@ -57,7 +55,7 @@ public class ExampleForHBase4 {
 
     public static void init(){
         configuration = HBaseConfiguration.create();
-        configuration.set("hbase.rootdir","hdfs://localhost:8020/hbase");
+        configuration.set("hbase.zookeeper.quorum","hadoop102,hadoop103,hadoop104");
         try{
             connection = ConnectionFactory.createConnection(configuration);
             admin = connection.getAdmin();

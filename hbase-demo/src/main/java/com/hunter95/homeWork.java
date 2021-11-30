@@ -5,6 +5,8 @@ import org.apache.hadoop.hbase.*;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
 import java.io.IOException;
+import java.util.ArrayList;
+
 public class homeWork {
 
     private static Connection connection=null;
@@ -68,10 +70,10 @@ public class homeWork {
 
     public static void main(String[] args) throws IOException {
 
-        //向表插入数据
-        putData("Student","scofield","score","English","45");
-        putData("Student","scofield","score","Math","89");
-        putData("Student","scofield","score","Computer","100");
+        //向表插入数据;
+        putData("201906061515_student","scofield","score","English","45");
+        putData("201906061515_student","scofield","score","Math","89");
+        putData("201906061515_student","scofield","score","Computer","100");
 
         //关闭资源
         close();

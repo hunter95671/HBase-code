@@ -40,7 +40,7 @@ public class ExampleForHBase3 {
 
     public static void init(){
         configuration = HBaseConfiguration.create();
-        configuration.set("hbase.rootdir","hdfs://localhost:8020/hbase");
+        configuration.set("hbase.zookeeper.quorum","hadoop102,hadoop103,hadoop104");
         try{
             connection = ConnectionFactory.createConnection(configuration);
             admin = connection.getAdmin();
