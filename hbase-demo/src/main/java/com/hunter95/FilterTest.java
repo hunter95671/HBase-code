@@ -16,7 +16,7 @@ public class FilterTest {
 
     public static void main(String[] args) throws IOException {
         init();
-        Table table = connection.getTable(TableName.valueOf("student"));
+        Table table = connection.getTable(TableName.valueOf("201906061515_emp"));
 
         Scan scan = new Scan();
 
