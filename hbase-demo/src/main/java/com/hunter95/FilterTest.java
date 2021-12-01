@@ -22,9 +22,6 @@ public class FilterTest {
 
         Filter rowFilter = new RowFilter(CompareFilter.CompareOp.GREATER, new BinaryComparator("1".getBytes()));
         scan.setFilter(rowFilter);
-//        Filter familyFilter = new FamilyFilter(CompareFilter.CompareOp.EQUAL, new BinaryComparator("info".getBytes()));
-//        scan.setFilter(familyFilter);
-
         ResultScanner resultScanner = table.getScanner(scan);
         for(Result result : resultScanner) {
             List<Cell> cells = result.listCells();
