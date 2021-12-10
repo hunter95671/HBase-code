@@ -127,9 +127,9 @@ public class homeWork {
                 "Free", "Garret", "Stan", "Darell", "Wilbur"};
 
         for (int i = 0; i < nameArray.length; i++) {
-            putData("201906061515_emp",""+i, "201906061515_info1", "ename", nameArray[i]);
-            putData("201906061515_emp",""+i, "201906061515_info1", "salary", ""+(8000+i));
-            putData("201906061515_emp",""+i, "201906061515_info2", "deptno", "0"+(((i)%5)+1));
+            putData("201906061515_emp",""+i, "201906061515_info1", "201906061515_ename", nameArray[i]);
+            putData("201906061515_emp",""+i, "201906061515_info1", "201906061515_salary", ""+(8000+i));
+            putData("201906061515_emp",""+i, "201906061515_info2", "201906061515_deptno", "0"+(((i)%5)+1));
         }
         //关闭资源
         close();
