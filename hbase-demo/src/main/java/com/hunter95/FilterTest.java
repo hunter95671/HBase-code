@@ -20,7 +20,7 @@ public class FilterTest {
 
         Scan scan = new Scan();
 
-        Filter rowFilter = new RowFilter(CompareFilter.CompareOp.GREATER, new BinaryComparator("1".getBytes()));
+        Filter rowFilter = new RowFilter(CompareFilter.CompareOp.GREATER, new BinaryComparator("40".getBytes()));
         scan.setFilter(rowFilter);
         ResultScanner resultScanner = table.getScanner(scan);
         for(Result result : resultScanner) {

@@ -12,15 +12,13 @@ public class ExampleForHBase {
 
     public static void main(String[] args)throws IOException{
 
-//         createTable("Score",new String[]{"sname","course"});
-
-        insertRow("Score", "95001", "sname", "", "Mary");
-        insertRow("Score", "95001", "course", "Math", "88");
-        insertRow("Score", "95001", "course", "English", "85");
+        insertRow("201906061515_emp", "50", "201906061515_info1", "201906061515_ename", "zhangsan");
+        insertRow("201906061515_emp", "51", "201906061515_info1", "201906061515_ename", "lisi");
+        insertRow("201906061515_emp", "52", "201906061515_info1", "201906061515_ename", "wangwu");
 
         System.out.println("--------------------------------");
-        getData("Score", "95001", "course", "Math");
-        getData("Score", "95001", "sname", "");
+        getData("201906061515_emp", "50", "201906061515_info1", "201906061515_ename");
+        getData("201906061515_emp", "40", "201906061515_info1", "");
 
     }
 

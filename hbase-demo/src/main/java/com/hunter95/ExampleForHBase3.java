@@ -1,8 +1,6 @@
 package com.hunter95;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hbase.Cell;
-import org.apache.hadoop.hbase.CellUtil;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.*;
@@ -21,13 +19,16 @@ public class ExampleForHBase3 {
 
         init();
 
-        String tableName = "counters";
+        String tableName = "201906061515_emp";
         try {
             Table table = connection.getTable(TableName.valueOf(tableName));
 
-            long count1 = table.incrementColumnValue(Bytes.toBytes("20150101"),Bytes.toBytes("daily"),Bytes.toBytes("hits"),1);
-            long count2 = table.incrementColumnValue(Bytes.toBytes("20150101"),Bytes.toBytes("daily"),Bytes.toBytes("hits"),1);
-            long currentCount = table.incrementColumnValue(Bytes.toBytes("20150101"),Bytes.toBytes("daily"),Bytes.toBytes("hits"),0);
+            long count1 = table.incrementColumnValue(Bytes.toBytes("10"),
+                    Bytes.toBytes("201906061515_info1"),Bytes.toBytes("201906061515_deptno"),1);
+            long count2 = table.incrementColumnValue(Bytes.toBytes("10"),
+                    Bytes.toBytes("201906061515_info1"),Bytes.toBytes("201906061515_deptno"),1);
+            long currentCount = table.incrementColumnValue(Bytes.toBytes("10"),
+                    Bytes.toBytes("201906061515_info1"),Bytes.toBytes("201906061515_deptno"),0);
             System.out.println("count1: "+count1);
             System.out.println("count2: "+count2);
             System.out.println("currentCount: "+currentCount);
